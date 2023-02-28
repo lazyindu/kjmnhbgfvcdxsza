@@ -1,3 +1,6 @@
+    # Credit @LazyDeveloper.
+    # Please Don't remove credit.
+    # Thank you LazyDeveloper for helping us in this Journey
 import asyncio
 import re
 import ast
@@ -52,7 +55,7 @@ async def rename(bot,update):
 	await update.message.reply_text("»»——— 𝙋𝙡𝙚𝙖𝙨𝙚 𝙚𝙣𝙩𝙚𝙧 𝙣𝙚𝙬 𝙛𝙞𝙡𝙚 𝙣𝙖𝙢𝙚...",	
 	reply_to_message_id=update.message.reply_to_message.id,  
 	reply_markup=ForceReply(True))  
-
+# Born to make history @LazyDeveloper !
 @Client.on_callback_query(filters.regex("upload"))
 async def doc(bot, update):
     type = update.data.split("_")[1]
@@ -145,7 +148,7 @@ async def doc(bot, update):
        os.remove(ph_path) 
 
 
-
+# Born to make history @LazyDeveloper !
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
@@ -224,7 +227,7 @@ async def next_page(bot, query):
         pass
     await query.answer()
 
-
+# Born to make history @LazyDeveloper !
 @Client.on_callback_query(filters.regex(r"^spolling"))
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
@@ -248,7 +251,7 @@ async def advantage_spoll_choker(bot, query):
             await asyncio.sleep(10)
             await k.delete()
 
-
+# Born to make history @LazyDeveloper !
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
@@ -960,7 +963,7 @@ async def auto_filter(client, msg, spoll=False):
     if spoll:
         await msg.message.delete()
 
-
+# Born to make history @LazyDeveloper !
 async def advantage_spell_chok(msg):
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",

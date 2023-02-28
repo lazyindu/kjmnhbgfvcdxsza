@@ -22,6 +22,11 @@ License Link : https://github.com/LazyDeveloperr/LazyPrincess/blob/main/LICENSE
 # Removing this is strictly prohibited ! Don't remove this all without the 
 permission of LazyDeveloperr
 """
+    # Credit @LazyDeveloper.
+    # Please Don't remove credit.
+        # Born to make history @LazyDeveloper !
+
+    # Thank you LazyDeveloper for helping us in this Journey
 
 from asyncio import sleep
 from pyrogram import Client, filters
@@ -32,6 +37,7 @@ from info import ADMINS , FLOOD, LAZY_MODE, LAZY_RENAMERS
 import random
 
 
+# Born to make history @LazyDeveloper !
 
 @Client.on_message( filters.private & (filters.document | filters.audio | filters.video))
 async def rename_start(client, message):
@@ -69,13 +75,15 @@ async def rename_start(client, message):
                 await message.reply_text(text=text, reply_to_message_id=message.id, reply_markup=InlineKeyboardMarkup(buttons))
             except:
                 pass
+        else:
+            file = getattr(message, message.media.value)
+            filesize = humanize.naturalsize(file.file_size) 
+            filename = file.file_name
+            text = f"""\n⨳ *•.¸♡ L҉ΛＺ𝐲 ＭⓄｄ𝓔 ♡¸.•* ⨳\n\n**Please tell, what should i do with this file.?**\n\n**🎞File Name** :- `{filename}`\n\n⚙️**File Size** :- `{filesize}`"""
+            buttons = [[ InlineKeyboardButton("📝✧✧ S𝚝ar𝚝 re𝚗aᗰi𝚗g ✧✧📝", callback_data="requireauth") ],
+                        [ InlineKeyboardButton("📸G͢e͢t͢ T͢h͢u͢m͢b͢n͢a͢i͢l͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="reqauthgetlazythumbnail") ],
+                        [ InlineKeyboardButton("🔏G͢e͢n͢e͢r͢a͢t͢e͢ L͢i͢n͢k͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="reqauthgetlazylink") ],
+                        [ InlineKeyboardButton("⨳  C L Ф S Ξ  ⨳", callback_data="cancel") ]]
+            await message.reply_text(text=text, reply_to_message_id=message.id, reply_markup=InlineKeyboardMarkup(buttons))
     else:
-        file = getattr(message, message.media.value)
-        filesize = humanize.naturalsize(file.file_size) 
-        filename = file.file_name
-        text = f"""\n⨳ *•.¸♡ L҉ΛＺ𝐲 ＭⓄｄ𝓔 ♡¸.•* ⨳\n\n**Please tell, what should i do with this file.?**\n\n**🎞File Name** :- `{filename}`\n\n⚙️**File Size** :- `{filesize}`"""
-        buttons = [[ InlineKeyboardButton("📝✧✧ S𝚝ar𝚝 re𝚗aᗰi𝚗g ✧✧📝", callback_data="requireauth") ],
-                       [ InlineKeyboardButton("📸G͢e͢t͢ T͢h͢u͢m͢b͢n͢a͢i͢l͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="reqauthgetlazythumbnail") ],
-                       [ InlineKeyboardButton("🔏G͢e͢n͢e͢r͢a͢t͢e͢ L͢i͢n͢k͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="reqauthgetlazylink") ],
-                       [ InlineKeyboardButton("⨳  C L Ф S Ξ  ⨳", callback_data="cancel") ]]
-        await message.reply_text(text=text, reply_to_message_id=message.id, reply_markup=InlineKeyboardMarkup(buttons))
+        return

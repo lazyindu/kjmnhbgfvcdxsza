@@ -138,9 +138,9 @@ async def send_for_index(bot, message):
     await bot.send_message(LOG_CHANNEL,
                            f'#IndexRequest\n\nBy : {message.from_user.mention} (<code>{message.from_user.id}</code>)\nChat ID/ Username - <code> {chat_id}</code>\nLast Message ID - <code>{last_msg_id}</code>\nInviteLink - {link}',
                            reply_markup=reply_markup)
-    if message.from_user.id in LAZY_RENAMERS:
-        if (LAZY_MODE == True):
-            k = await message.reply('🎉\n\n\n❤️ Thank You For the Contribution, Wait For My Moderators to verify the files.\n\n\n🐱‍👤')
+    if (LAZY_MODE == True):
+        if message.from_user.id in LAZY_RENAMERS:
+            k = await message.reply('🎉\n\n\n❤️ Thank You For the Contribution, Wait For My Moderators to verify the files.\n\n\n🎁')
             buttons = [
                         [InlineKeyboardButton("📝✧✧ S𝚝ar𝚝 re𝚗aᗰi𝚗g ✧✧📝", callback_data="rename") ],
                         [ InlineKeyboardButton("📸G͢e͢t͢ T͢h͢u͢m͢b͢n͢a͢i͢l͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="getlazythumbnail") ],
@@ -156,23 +156,27 @@ async def send_for_index(bot, message):
                                 reply_markup=reply_markup)
             await asyncio.sleep(600)
             await k.delete()
-    else :      
+        else :      
+            await message.reply('🎉\n\n\n❤️ Thank You For the Contribution, Wait For My Moderators to verify the files.\n\n\n🎁')
+            buttons = [
+                        [InlineKeyboardButton("📝✧✧ S𝚝ar𝚝 re𝚗aᗰi𝚗g ✧✧📝", callback_data="requireauth") ],
+                        [ InlineKeyboardButton("📸G͢e͢t͢ T͢h͢u͢m͢b͢n͢a͢i͢l͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="reqauthgetlazythumbnail") ],
+                        [ InlineKeyboardButton("🔏G͢e͢n͢e͢r͢a͢t͢e͢ L͢i͢n͢k͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="getlazylink") ],
+                        [InlineKeyboardButton('⨳  C L Ф S Ξ  ⨳', callback_data='cancel')]]
+            reply_markup = InlineKeyboardMarkup(buttons)
+            file = getattr(message, message.media.value)
+            filename = file.file_name
+            filesize = humanize.naturalsize(file.file_size) 
+            k = await message.reply(
+                                f"\n⨳ *•.¸♡ LΛＺ𝐲 ＭⓄｄ𝓔 ♡¸.•* ⨳\n\n🤩 Do you know LazyPrincess can do a lot of things at a time...\nWould you like to try some of it's amazing features... \n\n🪬Chat ID/ Username: <code>{chat_id}</code>\nℹ️Last Message ID: <code>{last_msg_id}</code> \n\n🎞**File Name** :- `{filename}`\n\n⚙️**File Size** :- `{filesize}`",
+                                reply_to_message_id=message.id,
+                                reply_markup=reply_markup)
+            await asyncio.sleep(600)
+            await k.delete()
+    else:
         await message.reply('🎉\n\n\n❤️ Thank You For the Contribution, Wait For My Moderators to verify the files.\n\n\n🎁')
-        buttons = [
-                    [InlineKeyboardButton("📝✧✧ S𝚝ar𝚝 re𝚗aᗰi𝚗g ✧✧📝", callback_data="requireauth") ],
-                    [ InlineKeyboardButton("📸G͢e͢t͢ T͢h͢u͢m͢b͢n͢a͢i͢l͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="reqauthgetlazythumbnail") ],
-                    [ InlineKeyboardButton("🔏G͢e͢n͢e͢r͢a͢t͢e͢ L͢i͢n͢k͢ ᶜᵒᵐⁱⁿᵍ ˢᵒᵒⁿ", callback_data="getlazylink") ],
-                    [InlineKeyboardButton('⨳  C L Ф S Ξ  ⨳', callback_data='cancel')]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        file = getattr(message, message.media.value)
-        filename = file.file_name
-        filesize = humanize.naturalsize(file.file_size) 
-        k = await message.reply(
-                            f"\n⨳ *•.¸♡ LΛＺ𝐲 ＭⓄｄ𝓔 ♡¸.•* ⨳\n\n🤩 Do you know LazyPrincess can do a lot of things at a time...\nWould you like to try some of it's amazing features... \n\n🪬Chat ID/ Username: <code>{chat_id}</code>\nℹ️Last Message ID: <code>{last_msg_id}</code> \n\n🎞**File Name** :- `{filename}`\n\n⚙️**File Size** :- `{filesize}`",
-                            reply_to_message_id=message.id,
-                            reply_markup=reply_markup)
-        await asyncio.sleep(600)
-        await k.delete()
+ 
+
 
 
 @Client.on_message(filters.command('setskip') & filters.user(ADMINS))
